@@ -12,15 +12,7 @@ namespace CaixaEletronico.Model
         public List<Deposito> Depositos { get; private set; } = new List<Deposito>();
 
         public int SaldoTotal
-        {
-            get
-            {
-                int saldoTotal = 0;
-                SaldoDasNotas.ForEach(s => saldoTotal += s.Quantidade * s.Valor);
-                
-                return saldoTotal;
-            }
-        }
+            => SaldoDasNotas.Sum(cedula => cedula.Quantidade * cedula.Valor);
 
         public void ExibirExtrato()
         {
